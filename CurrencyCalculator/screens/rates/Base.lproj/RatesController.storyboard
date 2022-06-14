@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Rates-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="RatesController" customModule="CurrencyCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jQw-Bb-del">
+                                <rect key="frame" x="44" y="68" width="326.5" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conversion rates of" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymQ-wP-Xrv">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[baseCurrency]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJe-LA-HJS" userLabel="baseCurrency">
+                                        <rect key="frame" x="178" y="0.0" width="148.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EYN-y5-dC7" userLabel="ratesTableView">
+                                <rect key="frame" x="0.0" y="201" width="414" height="612"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="choose currency" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4B0-0I-tUu" userLabel="chooseDropDown" customClass="CustomDropDown" customModule="CurrencyCalculator">
+                                <rect key="frame" x="57" y="104" width="300" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="EQt-mi-y8i"/>
+                                </constraints>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="EQt-mi-y8i"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="RqN-4F-MSp">
+                                <rect key="frame" x="8" y="150" width="398" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="0Vr-fo-7Uz" userLabel="activityIndicator">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="color" name="AccentColor"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="4B0-0I-tUu" firstAttribute="top" secondItem="jQw-Bb-del" secondAttribute="bottom" constant="12" id="4AQ-5z-ZKo"/>
+                            <constraint firstItem="RqN-4F-MSp" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-8" id="B30-fC-1Wb"/>
+                            <constraint firstItem="0Vr-fo-7Uz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GPC-hD-s6F"/>
+                            <constraint firstItem="0Vr-fo-7Uz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="KLC-Th-Dhr"/>
+                            <constraint firstItem="jQw-Bb-del" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="P3S-ie-Jnr"/>
+                            <constraint firstItem="jQw-Bb-del" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PZ4-t9-bqV"/>
+                            <constraint firstItem="EYN-y5-dC7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="S7N-fT-ROJ"/>
+                            <constraint firstItem="EYN-y5-dC7" firstAttribute="top" secondItem="RqN-4F-MSp" secondAttribute="bottom" id="UWD-gQ-tdB"/>
+                            <constraint firstItem="RqN-4F-MSp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="gj4-MC-9em"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EYN-y5-dC7" secondAttribute="trailing" id="jqS-W9-fVe"/>
+                            <constraint firstItem="4B0-0I-tUu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lb3-sW-iat"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EYN-y5-dC7" secondAttribute="bottom" id="mBc-mj-WAE"/>
+                            <constraint firstItem="RqN-4F-MSp" firstAttribute="top" secondItem="4B0-0I-tUu" secondAttribute="bottom" constant="12" id="xDj-Bl-2WX"/>
+                        </constraints>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="4AQ-5z-ZKo"/>
+                                <include reference="lb3-sW-iat"/>
+                                <include reference="B30-fC-1Wb"/>
+                                <include reference="gj4-MC-9em"/>
+                                <include reference="xDj-Bl-2WX"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Rates" image="eurosign.circle" catalog="system" id="Yaz-7b-waq"/>
+                    <navigationItem key="navigationItem" id="lO6-Wf-6hD"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="0Vr-fo-7Uz" id="rFw-Eu-7o9"/>
+                        <outlet property="baseCurrency" destination="OJe-LA-HJS" id="n2Q-wb-4kX"/>
+                        <outlet property="chooseDropDown" destination="4B0-0I-tUu" id="Pfe-s3-JpN"/>
+                        <outlet property="ratesTableView" destination="EYN-y5-dC7" id="rJ4-qa-pbu"/>
+                        <outlet property="searchBar" destination="RqN-4F-MSp" id="Pu2-ja-EYi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="915.94202898550736" y="53.571428571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="eurosign.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

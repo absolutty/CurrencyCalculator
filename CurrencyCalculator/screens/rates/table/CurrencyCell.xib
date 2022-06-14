@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrencyCell" customModule="CurrencyCalculator" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="69" id="KGk-i7-Jjw" customClass="CurrencyCell" customModule="CurrencyCalculator" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="402" height="69"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="402" height="69"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftS-E6-Fxw">
+                        <rect key="frame" x="8" y="4" width="386" height="61"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[USD]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4a-W8-n0c">
+                                <rect key="frame" x="123" y="18.5" width="60" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="ovB-Qd-Zyn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[value]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19I-eC-8Kk">
+                                <rect key="frame" x="183" y="18.5" width="60" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jV-rh-M0K">
+                                <rect key="frame" x="330" y="10.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="1jV-rh-M0K" secondAttribute="height" multiplier="1:1" id="0G2-qo-meF"/>
+                                    <constraint firstAttribute="height" constant="40" id="wDW-oV-DEz"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" image="ico-line-chart"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="didTapButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nq6-oK-9xv"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="0.24336424568631002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="z4a-W8-n0c" firstAttribute="centerX" secondItem="ftS-E6-Fxw" secondAttribute="centerX" constant="-40" id="9bZ-GE-v9F"/>
+                            <constraint firstItem="1jV-rh-M0K" firstAttribute="centerY" secondItem="ftS-E6-Fxw" secondAttribute="centerY" id="Ih1-Rc-0I9"/>
+                            <constraint firstItem="19I-eC-8Kk" firstAttribute="centerY" secondItem="ftS-E6-Fxw" secondAttribute="centerY" id="Thb-hW-r6w"/>
+                            <constraint firstAttribute="trailing" secondItem="1jV-rh-M0K" secondAttribute="trailing" constant="16" id="ZBr-Sc-Fam"/>
+                            <constraint firstItem="z4a-W8-n0c" firstAttribute="centerY" secondItem="ftS-E6-Fxw" secondAttribute="centerY" id="cQ0-py-aoI"/>
+                            <constraint firstItem="19I-eC-8Kk" firstAttribute="leading" secondItem="z4a-W8-n0c" secondAttribute="trailing" id="iVU-lq-p9y"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ftS-E6-Fxw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="7CN-la-fi5"/>
+                    <constraint firstAttribute="bottom" secondItem="ftS-E6-Fxw" secondAttribute="bottom" constant="4" id="EQY-32-qy6"/>
+                    <constraint firstItem="ftS-E6-Fxw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Eiu-et-dGH"/>
+                    <constraint firstAttribute="trailing" secondItem="ftS-E6-Fxw" secondAttribute="trailing" constant="8" id="SOm-yp-j8w"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="abbreviatonLabel" destination="z4a-W8-n0c" id="Pdl-D4-Xhf"/>
+                <outlet property="valueLabel" destination="19I-eC-8Kk" id="0Jl-7F-t3f"/>
+            </connections>
+            <point key="canvasLocation" x="191.30434782608697" y="73.995535714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ico-line-chart" width="225" height="225"/>
+    </resources>
+</document>

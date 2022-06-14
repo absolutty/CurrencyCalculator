@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Exchange calculator"; ObjectID = "08G-by-laB"; */
+"08G-by-laB.text" = "Kurzová kalkulačka";
+
+/* Class = "UITabBarItem"; title = "Calculator"; ObjectID = "HiJ-6m-nwc"; */
+"HiJ-6m-nwc.title" = "Kalkulačka";
+
+/* Class = "UITextField"; placeholder = "from"; ObjectID = "RR5-jk-HoW"; */
+"RR5-jk-HoW.placeholder" = "z meny";
+
+/* Class = "UITextField"; placeholder = "to"; ObjectID = "qim-oq-JeJ"; */
+"qim-oq-JeJ.placeholder" = "do meny";

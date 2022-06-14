@@ -1,0 +1,171 @@
+import UIKit
+
+class RatesController: UIViewController{
+    //MARK: attributes
+    var keysArray = Array<String>() //obsahuje USPORIADANE skratky jednotlivych mien ("AUD", "USD", ...)
+    var curencyRates: [String: CurrencyRate] = [:] //zoznam jednotlivych mien (kazda je ulozena na key, kt. je jej skatkou
+    var filteredKeysArray = Array<String>() //skratky su VYFILTROVANE
+    
+    //MARK: outlets
+    @IBOutlet weak var baseCurrency: UILabel!
+    @IBOutlet weak var chooseDropDown: CustomDropDown!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var ratesTableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        activityIndicator.startAnimating()
+        
+        //nastavovanie defaultnych hodnot 
+        baseCurrency.text = loadLatestRate()
+        chooseDropDown.text = curencyRates[baseCurrency.text!]?.fullName
+        
+        loadRates()
+        
+        //listener na ZMENU zvolenej meny
+        chooseDropDown.didSelect{ (selectedText , index ,id) in
+            self.baseCurrency.text = self.chooseDropDown.getAbbreviation(of: selectedText)
+            self.loadRates()
+            self.storeLatestRate()
+        }
+        
+        //outlet delegations
+        searchBar.delegate = self
+        ratesTableView.dataSource = self
+        ratesTableView.register(UINib(nibName: CurrencyCell.classString, bundle: nil),
+                           forCellReuseIdentifier: CurrencyCell.classString)
+        
+    }
+    
+    //MARK: LOADING latest used rate
+    private func loadLatestRate() -> String {
+        if let data = UserDefaults.standard.data(forKey: "keys") {
+            do {
+                let decoder = JSONDecoder()
+                let keys = try decoder.decode([StoreRateKey].self, from: data)
+                
+                return keys[0].key
+
+            } catch {
+                print("Unable to Decode Notes (\(error))")
+            }
+        }
+        return ""
+    }
+    
+    //MARK: SAVING latest used rate
+    private func storeLatestRate() {
+        let keyToBeSaved = StoreRateKey(key: self.baseCurrency.text!)
+        let keys = [keyToBeSaved]
+
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(keys)
+            UserDefaults.standard.set(data, forKey: "keys")
+
+        } catch {
+            print("Unable to Encode Array of keys (\(error))")
+        }
+    }
+    
+    //MARK: nacita a ulozi data z API (taktiez sa refreshne tableview)
+    private func loadRates() {
+        RequestManager.shared.getCurrencies() { response in
+            switch response {
+            case .success(let currenciesData):
+                self.keysArray = Array(currenciesData.keys)
+                self.keysArray.sort()
+                
+                //cyklus, kt. vytvara objekty typu CurrencyRate a nastavuje im fullname
+                for key in self.keysArray {
+                    var currencyRate = CurrencyRate()
+                    currencyRate.fullName = currenciesData[key]!
+                    self.curencyRates[key] = currencyRate
+                }
+                
+                RequestManager.shared.getLatest(base: self.baseCurrency.text!){  response in
+                    self.activityIndicator.stopAnimating()
+                    
+                    switch response{
+                    case .success(let latestData):
+                        var ratesData: [String : Double] = [:]
+                        ratesData = latestData.rates
+                        
+                        //pridelovanie hodnot k jednotlivym uz vytvorenym menam
+                        for key in self.keysArray {
+                            //kontrola konzistencie dat
+                            if let data = ratesData[key] {
+                                self.curencyRates[key]?.value = data
+                            }
+                        }
+                        self.filteredKeysArray = self.keysArray
+                        self.ratesTableView.reloadData()
+                                   
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+}
+
+// MARK: tableView DataSource definition
+extension RatesController : UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredKeysArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let ratesCell =
+                tableView.dequeueReusableCell(withIdentifier:
+                    CurrencyCell.classString, for: indexPath) as? CurrencyCell else {
+                        return UITableViewCell()
+        }
+        
+        let currentKey = self.filteredKeysArray[indexPath.row]
+        let currenRate : CurrencyRate = self.curencyRates[currentKey]!
+
+        ratesCell.setupCell(abbreviation: currentKey, value: currenRate.value)
+        ratesCell.actionBlock = {
+            self.cellOnClicked(currencyAbbreviation: self.filteredKeysArray[indexPath.row])
+        }
+        
+        
+        return ratesCell
+    }
+    
+    //cell with currencyAbbreviation was clicked
+    private func cellOnClicked(currencyAbbreviation: String) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "DetailController", bundle: nil)
+        let detailController = storyBoard.instantiateViewController(withIdentifier: "id-detail") as! DetailController
+        detailController.setupDetail(fullNameFrom: self.curencyRates[currencyAbbreviation]!.fullName,
+                                     abbreviationFrom: currencyAbbreviation,
+                                     abbreviationTo: self.baseCurrency.text!)
+        
+        self.present(detailController, animated: true, completion: nil)
+    }
+}
+
+//MARK: searchBar delegate
+extension RatesController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty == false {
+            self.filteredKeysArray = Array<String>()
+            
+            for key in keysArray {
+                if ((curencyRates[key]?.fullName.lowercased().hasPrefix(searchText.lowercased())) == true) {
+                    filteredKeysArray.append(key)
+                }
+            }
+        } else {
+            self.filteredKeysArray = self.keysArray
+        }
+        
+        self.ratesTableView.reloadData()
+    }
+}

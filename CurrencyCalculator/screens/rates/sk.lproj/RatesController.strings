@@ -1,0 +1,9 @@
+
+/* Class = "UITextField"; placeholder = "choose currency"; ObjectID = "4B0-0I-tUu"; */
+"4B0-0I-tUu.placeholder" = "zvoľ menu";
+
+/* Class = "UITabBarItem"; title = "Rates"; ObjectID = "Yaz-7b-waq"; */
+"Yaz-7b-waq.title" = "Kurzy";
+
+/* Class = "UILabel"; text = "Conversion rates of"; ObjectID = "ymQ-wP-Xrv"; */
+"ymQ-wP-Xrv.text" = "Konverzné kurzy";

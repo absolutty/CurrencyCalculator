@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Calculator-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="ExchangeCalculatorController" customModule="CurrencyCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exchange calculator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08G-by-laB" userLabel="title">
+                                <rect key="frame" x="0.0" y="68" width="390" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mtb-wa-3Jz" userLabel="exchangeView">
+                                <rect key="frame" x="16" y="92" width="358" height="300"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="equal.square.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Opn-KW-okw" userLabel="calculateButton">
+                                        <rect key="frame" x="154" y="126.99999999999999" width="50" height="46.333333333333329"/>
+                                        <color key="tintColor" systemColor="systemBlueColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="3MY-YE-Iy8"/>
+                                            <constraint firstAttribute="height" constant="49.5" id="Ph3-3W-HMT"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="wS4-jX-ib5">
+                                        <rect key="frame" x="29" y="29.666666666666671" width="300" height="34"/>
+                                        <subviews>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rha-km-sod" userLabel="fromAbbreviation">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="75" id="0Yx-dr-rUA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="from" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RR5-jk-HoW" userLabel="fromDropDown" customClass="CustomDropDown" customModule="CurrencyCalculator" customModuleProvider="target">
+                                                <rect key="frame" x="100" y="0.0" width="200" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="gRT-fW-TvT"/>
+                                                    <constraint firstAttribute="height" constant="34" id="qrk-9k-QRZ"/>
+                                                </constraints>
+                                                <attributedString key="attributedText"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Pd-Ue-rsX" userLabel="toCurrency">
+                                        <rect key="frame" x="79" y="236.66666666666669" width="200" height="34.333333333333314"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="WDh-ae-Omc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bHA-Z8-haS" userLabel="fromValue">
+                                        <rect key="frame" x="79" y="75.666666666666657" width="200" height="33.666666666666657"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="hBl-zt-COp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="I4O-o2-t3v">
+                                        <rect key="frame" x="29" y="190.66666666666669" width="300" height="34"/>
+                                        <subviews>
+                                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KAr-8r-9in" userLabel="toAbbreviation">
+                                                <rect key="frame" x="0.0" y="0.0" width="75" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="75" id="Lrr-jr-y54"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="to" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qim-oq-JeJ" userLabel="toDropDown" customClass="CustomDropDown" customModule="CurrencyCalculator" customModuleProvider="target">
+                                                <rect key="frame" x="100" y="0.0" width="200" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34" id="4VK-xR-zTF"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="RCC-Fb-bf1"/>
+                                                </constraints>
+                                                <attributedString key="attributedText"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Opn-KW-okw" firstAttribute="centerX" secondItem="Mtb-wa-3Jz" secondAttribute="centerX" id="2dc-3J-SW8"/>
+                                    <constraint firstAttribute="bottom" secondItem="4Pd-Ue-rsX" secondAttribute="bottom" constant="29" id="3G2-4c-Iaa"/>
+                                    <constraint firstItem="Opn-KW-okw" firstAttribute="centerY" secondItem="Mtb-wa-3Jz" secondAttribute="centerY" id="97R-iH-vQc"/>
+                                    <constraint firstItem="wS4-jX-ib5" firstAttribute="top" secondItem="Mtb-wa-3Jz" secondAttribute="top" constant="29.5" id="Bib-Tl-JcJ"/>
+                                    <constraint firstItem="bHA-Z8-haS" firstAttribute="top" secondItem="wS4-jX-ib5" secondAttribute="bottom" constant="12" id="Cc1-aa-f8E"/>
+                                    <constraint firstItem="I4O-o2-t3v" firstAttribute="centerX" secondItem="Mtb-wa-3Jz" secondAttribute="centerX" id="JWe-ut-LfU"/>
+                                    <constraint firstItem="wS4-jX-ib5" firstAttribute="centerX" secondItem="Mtb-wa-3Jz" secondAttribute="centerX" id="Li5-e8-hWy"/>
+                                    <constraint firstAttribute="width" constant="358" id="aGX-eU-l9H"/>
+                                    <constraint firstItem="I4O-o2-t3v" firstAttribute="top" secondItem="Opn-KW-okw" secondAttribute="bottom" constant="16" id="bZV-A5-tda"/>
+                                    <constraint firstItem="Opn-KW-okw" firstAttribute="top" secondItem="bHA-Z8-haS" secondAttribute="bottom" constant="16" id="fKy-nt-HNL"/>
+                                    <constraint firstItem="4Pd-Ue-rsX" firstAttribute="top" secondItem="I4O-o2-t3v" secondAttribute="bottom" constant="12" id="h6M-Oy-Ud2"/>
+                                    <constraint firstItem="4Pd-Ue-rsX" firstAttribute="centerX" secondItem="Mtb-wa-3Jz" secondAttribute="centerX" id="mvN-nW-wuk"/>
+                                    <constraint firstAttribute="height" constant="300" id="uOp-t1-F2h"/>
+                                    <constraint firstItem="bHA-Z8-haS" firstAttribute="centerX" secondItem="Mtb-wa-3Jz" secondAttribute="centerX" id="w1b-9U-9cH"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="aGX-eU-l9H"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="aGX-eU-l9H"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="u4f-p4-Hf7" userLabel="activityIndicator">
+                                <rect key="frame" x="176.66666666666666" y="403.66666666666669" width="37" height="37"/>
+                                <color key="color" name="AccentColor"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7FK-XA-TpN" userLabel="chartView" customClass="CustomLineChartView" customModule="CurrencyCalculator" customModuleProvider="target">
+                                <rect key="frame" x="16" y="400" width="358" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Lcw-lg-1Wt"/>
+                                    <constraint firstAttribute="width" constant="358" id="qiq-bk-frS"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="qiq-bk-frS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="qiq-bk-frS"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Mtb-wa-3Jz" secondAttribute="trailing" constant="16" id="9ZC-VH-aPI"/>
+                            <constraint firstItem="Mtb-wa-3Jz" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="32" id="BEr-H4-l9m"/>
+                            <constraint firstItem="u4f-p4-Hf7" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="KSV-A1-dAa"/>
+                            <constraint firstItem="08G-by-laB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="Ljw-Tg-Umu"/>
+                            <constraint firstItem="Mtb-wa-3Jz" firstAttribute="top" secondItem="08G-by-laB" secondAttribute="bottom" constant="8" id="Qtp-Bh-gY7"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7FK-XA-TpN" secondAttribute="trailing" constant="32" id="VVe-4h-hYf"/>
+                            <constraint firstItem="u4f-p4-Hf7" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="WbT-Hk-mqN"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="08G-by-laB" secondAttribute="trailing" id="baS-gA-M9F"/>
+                            <constraint firstAttribute="trailing" secondItem="7FK-XA-TpN" secondAttribute="trailing" constant="16" id="eF3-3t-BKw"/>
+                            <constraint firstItem="Mtb-wa-3Jz" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="md0-uW-dro"/>
+                            <constraint firstItem="7FK-XA-TpN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="oB7-vG-Deg"/>
+                            <constraint firstItem="08G-by-laB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="24" id="omS-hW-v2L"/>
+                            <constraint firstItem="7FK-XA-TpN" firstAttribute="top" secondItem="Mtb-wa-3Jz" secondAttribute="bottom" constant="8" id="swl-01-pWK"/>
+                            <constraint firstItem="7FK-XA-TpN" firstAttribute="top" secondItem="08G-by-laB" secondAttribute="bottom" constant="8" id="tSn-C9-mLq"/>
+                            <constraint firstItem="Mtb-wa-3Jz" firstAttribute="top" secondItem="08G-by-laB" secondAttribute="bottom" id="wVz-Be-yOJ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9ZC-VH-aPI"/>
+                                <exclude reference="VVe-4h-hYf"/>
+                                <exclude reference="BEr-H4-l9m"/>
+                                <exclude reference="Qtp-Bh-gY7"/>
+                                <exclude reference="md0-uW-dro"/>
+                                <exclude reference="wVz-Be-yOJ"/>
+                                <exclude reference="eF3-3t-BKw"/>
+                                <exclude reference="oB7-vG-Deg"/>
+                                <exclude reference="swl-01-pWK"/>
+                                <exclude reference="tSn-C9-mLq"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="VVe-4h-hYf"/>
+                                <include reference="BEr-H4-l9m"/>
+                                <include reference="Qtp-Bh-gY7"/>
+                                <include reference="tSn-C9-mLq"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="9ZC-VH-aPI"/>
+                                <include reference="md0-uW-dro"/>
+                                <include reference="wVz-Be-yOJ"/>
+                                <include reference="eF3-3t-BKw"/>
+                                <include reference="oB7-vG-Deg"/>
+                                <include reference="swl-01-pWK"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Calculator" image="plus.forwardslash.minus" catalog="system" id="HiJ-6m-nwc"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="u4f-p4-Hf7" id="OLG-xG-7jQ"/>
+                        <outlet property="btnCalculate" destination="Opn-KW-okw" id="WQv-5R-itL"/>
+                        <outlet property="chartView" destination="7FK-XA-TpN" id="H08-qb-H4R"/>
+                        <outlet property="dropDownFrom" destination="RR5-jk-HoW" id="xiW-r1-4eW"/>
+                        <outlet property="dropDownTo" destination="qim-oq-JeJ" id="hSC-sk-6Zs"/>
+                        <outlet property="txtFieldAbbreviationFrom" destination="Rha-km-sod" id="skf-AA-D4m"/>
+                        <outlet property="txtFieldAbbreviationTo" destination="KAr-8r-9in" id="PYe-xg-g8A"/>
+                        <outlet property="txtFieldInput" destination="bHA-Z8-haS" id="iD8-xW-7NF"/>
+                        <outlet property="txtFieldOutput" destination="4Pd-Ue-rsX" id="T0c-eO-fny"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1824.8815165876777" y="47.692307692307693"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="equal.square.fill" catalog="system" width="128" height="114"/>
+        <image name="plus.forwardslash.minus" catalog="system" width="128" height="115"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
