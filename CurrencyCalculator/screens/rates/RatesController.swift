@@ -13,6 +13,12 @@ class RatesController: UIViewController{
     @IBOutlet weak var ratesTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    /// Funkcia sa spusta pri loadovani View-u.
+    ///    - spustenie indikatora nacitavania
+    ///    - nastavenie zobrazovanej base meny
+    ///    - nacitanie kurzov
+    ///    - didSelect (listener) zobrazenia detailu
+    ///    - urcenie delegatov
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +46,8 @@ class RatesController: UIViewController{
     }
     
     //MARK: LOADING latest used rate
+    /// Nacita z UserDefaults poslednu ulozenu menu.
+    /// - Returns: skratku ako String poslednej ulozenej meny
     private func loadLatestRate() -> String {
         if let data = UserDefaults.standard.data(forKey: "keys") {
             do {
@@ -56,6 +64,7 @@ class RatesController: UIViewController{
     }
     
     //MARK: SAVING latest used rate
+    /// Ulozi do UserDefaults poslednu zvolenu menu.
     private func storeLatestRate() {
         let keyToBeSaved = StoreRateKey(key: self.baseCurrency.text!)
         let keys = [keyToBeSaved]
@@ -70,7 +79,8 @@ class RatesController: UIViewController{
         }
     }
     
-    //MARK: nacita a ulozi data z API (taktiez sa refreshne tableview)
+    //MARK: LOADING and saving rates
+    /// nacita a ulozi data z API (taktiez sa refreshne tableview)
     private func loadRates() {
         RequestManager.shared.getCurrencies() { response in
             switch response {
